@@ -91,6 +91,14 @@ class CatalogManager(
         try {
             val version = fetchVersion()
             if (version == null) {
+                if (_state.value !is CatalogState.Ready) {
+                    // Local catalog is gone but the ETag survived; force a full version response.
+                    val fresh = fetchVersion(ignoreCache = true)
+                    if (fresh != null) {
+                        install(fresh)
+                        return
+                    }
+                }
                 Log.i(TAG, "catalog check: not modified")
                 _update.value = UpdateState.Idle
                 return
@@ -119,10 +127,10 @@ class CatalogManager(
         }
     }
 
-    private suspend fun fetchVersion(): VersionInfo? = withContext(Dispatchers.IO) {
+    private suspend fun fetchVersion(ignoreCache: Boolean = false): VersionInfo? = withContext(Dispatchers.IO) {
         val request = Request.Builder()
             .url(baseUrl + "version.json")
-            .apply { prefs.versionEtag?.let { header("If-None-Match", it) } }
+            .apply { if (!ignoreCache) prefs.versionEtag?.let { header("If-None-Match", it) } }
             .build()
         versionClient.newCall(request).execute().use { response ->
             if (response.code == 304) return@withContext null

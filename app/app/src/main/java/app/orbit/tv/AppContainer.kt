@@ -4,6 +4,7 @@ import android.content.Context
 import app.orbit.tv.catalog.CatalogManager
 import app.orbit.tv.player.PlaybackController
 import app.orbit.tv.settings.Prefs
+import app.orbit.tv.sound.SoundEngine
 import app.orbit.tv.userdata.UserDatabase
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
@@ -16,6 +17,7 @@ class AppContainer(context: Context) {
     val okHttp: OkHttpClient = buildClient()
 
     val prefs = Prefs(context)
+    val sound = SoundEngine(context.applicationContext, prefs)
     val catalog = CatalogManager(context.filesDir, context.cacheDir, prefs, okHttp)
     val users = UserDatabase(context)
     val playback = PlaybackController(context.applicationContext, okHttp)

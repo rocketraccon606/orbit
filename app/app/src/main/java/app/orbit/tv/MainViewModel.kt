@@ -11,6 +11,7 @@ import app.orbit.tv.catalog.ChannelCard
 import app.orbit.tv.catalog.ChannelDetail
 import app.orbit.tv.catalog.CatalogCounts
 import app.orbit.tv.catalog.HomeRow
+import app.orbit.tv.sound.SoundPack
 import java.util.concurrent.atomic.AtomicInteger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -71,6 +72,10 @@ class MainViewModel(private val container: AppContainer) : ViewModel() {
     val catalogState = container.catalog.state
     val updateState = container.catalog.update
     val playback = container.playback
+    val sound = container.sound
+
+    private val _soundPack = MutableStateFlow(container.sound.pack)
+    val soundPack: StateFlow<SoundPack> = _soundPack
 
     private var dao: CatalogDao? = null
     private var loadedVersion: String? = null
@@ -204,6 +209,11 @@ class MainViewModel(private val container: AppContainer) : ViewModel() {
 
     fun closeSettings() {
         _ui.update { it.copy(screen = Screen.Home) }
+    }
+
+    fun setSoundPack(pack: SoundPack) {
+        container.sound.setPack(pack)
+        _soundPack.value = pack
     }
 
     fun openBrowse(key: String) {

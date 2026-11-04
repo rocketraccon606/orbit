@@ -323,6 +323,7 @@ private fun QuickRow(
         modifier = Modifier
             .fillMaxWidth()
             .height(52.dp)
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .then(focusMod)
             .clip(shape)

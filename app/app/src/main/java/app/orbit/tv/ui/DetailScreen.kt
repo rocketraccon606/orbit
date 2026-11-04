@@ -314,6 +314,7 @@ private fun AboutSection(detail: ChannelDetail, modifier: Modifier = Modifier) {
     Column(
         modifier
             .fillMaxWidth()
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .background(if (focused) OrbitColors.Surface else Color.Transparent, shape)
             .border(if (focused) 1.dp else 0.dp, OrbitColors.Accent, shape)

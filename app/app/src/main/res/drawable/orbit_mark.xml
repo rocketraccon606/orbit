@@ -1,18 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
-    android:viewportWidth="108"
-    android:viewportHeight="108">
-    <path
-        android:fillColor="#07080B"
-        android:pathData="M0,0h108v108h-108z" />
-    <path
-        android:fillColor="@android:color/transparent"
-        android:pathData="M54,22a32,32 0 1,1 -0.1,0z"
-        android:strokeColor="#F2B36B"
-        android:strokeWidth="5" />
-    <path
-        android:fillColor="#F5F6F8"
-        android:pathData="M54,42a12,12 0 1,1 -0.1,0z" />
+    android:viewportWidth="220"
+    android:viewportHeight="220">
+
+    <group
+        android:translateX="30"
+        android:translateY="30">
+
+        <path
+            android:fillColor="#141414"
+            android:pathData="M18,-30 H142 A48,48 0 0 1 190,18 V142 A48,48 0 0 1 142,190 H18 A48,48 0 0 1 -30,142 V18 A48,48 0 0 1 18,-30 Z" />
+
+        <group
+            android:pivotX="80"
+            android:pivotY="80"
+            android:rotation="-22">
+            <path
+                android:pathData="M-2,80 A82,24 0 0 1 162,80"
+                android:strokeAlpha="0.55"
+                android:strokeLineCap="round"
+                android:strokeWidth="5">
+                <aapt:attr name="android:strokeColor">
+                    <gradient
+                        android:endColor="#FFFFFF"
+                        android:endX="162"
+                        android:endY="80"
+                        android:startColor="#FFD1C4"
+                        android:startX="-2"
+                        android:startY="80"
+                        android:type="linear" />
+                </aapt:attr>
+            </path>
+        </group>
+
+        <path
+            android:pathData="M80,30 A50,50 0 1 1 80,130 A50,50 0 1 1 80,30 Z"
+            android:strokeWidth="16">
+            <aapt:attr name="android:strokeColor">
+                <gradient
+                    android:centerColor="#E50914"
+                    android:endColor="#9A0610"
+                    android:endX="130"
+                    android:endY="130"
+                    android:startColor="#FF5A5F"
+                    android:startX="30"
+                    android:startY="30"
+                    android:type="linear" />
+            </aapt:attr>
+        </path>
+
+        <group
+            android:pivotX="80"
+            android:pivotY="80"
+            android:rotation="-22">
+            <path
+                android:pathData="M162,80 A82,24 0 0 1 -2,80"
+                android:strokeColor="#141414"
+                android:strokeLineCap="round"
+                android:strokeWidth="13" />
+            <path
+                android:pathData="M162,80 A82,24 0 0 1 -2,80"
+                android:strokeLineCap="round"
+                android:strokeWidth="5">
+                <aapt:attr name="android:strokeColor">
+                    <gradient
+                        android:endColor="#FFFFFF"
+                        android:endX="162"
+                        android:endY="80"
+                        android:startColor="#FFD1C4"
+                        android:startX="-2"
+                        android:startY="80"
+                        android:type="linear" />
+                </aapt:attr>
+            </path>
+            <path android:pathData="M130,81 A18,18 0 1 1 130,117 A18,18 0 1 1 130,81 Z">
+                <aapt:attr name="android:fillColor">
+                    <gradient
+                        android:centerX="130"
+                        android:centerY="99"
+                        android:endColor="#00FFFFFF"
+                        android:gradientRadius="18"
+                        android:startColor="#66FFFFFF"
+                        android:type="radial" />
+                </aapt:attr>
+            </path>
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M130,90 A9,9 0 1 1 130,108 A9,9 0 1 1 130,90 Z" />
+        </group>
+
+    </group>
 </vector>

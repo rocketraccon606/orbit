@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
@@ -21,9 +22,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.orbit.tv.MainViewModel
 import app.orbit.tv.UiState
 import app.orbit.tv.catalog.UpdateState
+import app.orbit.tv.sound.SoundPack
 
 @Composable
 fun SettingsScreen(
@@ -34,6 +37,7 @@ fun SettingsScreen(
 ) {
     val firstAction = remember { FocusRequester() }
     val navHome = remember { FocusRequester() }
+    val soundPack by vm.soundPack.collectAsStateWithLifecycle()
     LaunchedEffect(Unit) {
         withFrameNanos { }
         runCatching { firstAction.requestFocus() }
@@ -87,6 +91,25 @@ fun SettingsScreen(
                     OrbitButton("Clear favourites", onClick = vm::clearFavorites, contentPadding = buttonPadding)
                     OrbitButton("Clear watch history", onClick = vm::clearRecents, contentPadding = buttonPadding)
                 }
+
+                Spacer(Modifier.padding(2.dp))
+                SectionTitle("Sound effects")
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    SoundPack.entries.forEach { pack ->
+                        OrbitButton(
+                            pack.label,
+                            onClick = { vm.setSoundPack(pack) },
+                            primary = soundPack == pack,
+                            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
+                        )
+                    }
+                }
+                Label(
+                    if (soundPack == SoundPack.OFF) "Navigation sounds are off"
+                    else "Separate cues for horizontal, vertical and select",
+                    size = 10,
+                    color = OrbitColors.Muted,
+                )
             }
 
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {

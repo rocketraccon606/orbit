@@ -4,6 +4,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
@@ -50,9 +51,13 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import app.orbit.tv.OrbitApp
+import app.orbit.tv.R
 import app.orbit.tv.catalog.ChannelCard
 import coil.compose.SubcomposeAsyncImage
 import kotlinx.coroutines.Job
@@ -60,6 +65,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 private const val LONG_PRESS_MS = 550L
+
+@Composable
+fun Modifier.orbitFocusSound(): Modifier {
+    val context = LocalContext.current
+    val sound = (context.applicationContext as OrbitApp).container.sound
+    return this.onFocusChanged { if (it.isFocused) sound.onFocusGained() }
+}
 
 /**
  * Click plus D-pad long press. combinedClickable only understands pointer
@@ -145,6 +157,7 @@ fun ChannelTile(
     Box(
         modifier = modifier
             .width(width)
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .then(focusModifier)
             .tvItemClickable(onClick = onClick, onLongClick = onLongClick)
@@ -331,6 +344,7 @@ fun OrbitButton(
     }
     Box(
         modifier = modifier
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .then(focusModifier)
             .clip(shape)
@@ -364,6 +378,7 @@ fun PillButton(
     }
     Box(
         modifier = modifier
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .then(focusModifier)
             .clip(shape)
@@ -401,6 +416,7 @@ fun CircleAction(
     Box(
         modifier = modifier
             .size(42.dp)
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .then(focusModifier)
             .clip(CircleShape)
@@ -433,7 +449,14 @@ fun TopBar(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Label("ORBIT", size = 15, color = OrbitColors.Accent, weight = FontWeight.Bold, letterSpacing = 3f)
+        Image(
+            painter = painterResource(R.drawable.orbit_lockup),
+            contentDescription = "Orbit",
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .height(22.dp)
+                .aspectRatio(520f / 160f),
+        )
         Box(Modifier.width(10.dp))
         OrbitButton("Search", onClick = onSearch)
         OrbitButton("Settings", onClick = onSettings)
@@ -464,7 +487,14 @@ fun OrbitNavBar(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(22.dp),
     ) {
-        Label("ORBIT", size = 26, color = OrbitColors.Accent, weight = FontWeight.ExtraBold, letterSpacing = 2f)
+        Image(
+            painter = painterResource(R.drawable.orbit_lockup),
+            contentDescription = "Orbit",
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .height(34.dp)
+                .aspectRatio(520f / 160f),
+        )
         Spacer(Modifier.width(4.dp))
         NavAction("Home", selected == "home", onHome, homeFocus)
         NavAction("Channels", selected == "all", onClick = { onBrowse("all") })
@@ -486,6 +516,7 @@ private fun SearchIconButton(onClick: () -> Unit) {
     val tint = if (focused) Color.White else Color(0xFFE5E5E5)
     Box(
         modifier = Modifier
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .clip(RoundedCornerShape(4.dp))
             .background(if (focused) Color(0x22FFFFFF) else Color.Transparent)
@@ -551,6 +582,7 @@ private fun NavAction(
     val focusModifier = if (focusRequester != null) Modifier.focusRequester(focusRequester) else Modifier
     Box(
         modifier = Modifier
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .then(focusModifier)
             .clip(RoundedCornerShape(4.dp))
@@ -573,6 +605,7 @@ private fun AvatarBadge(onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .size(34.dp)
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .clip(RoundedCornerShape(4.dp))
             .background(Brush.linearGradient(listOf(Color(0xFF1D6FE0), Color(0xFF6AD1FF))))
@@ -599,6 +632,7 @@ fun HeroButton(
     val focusModifier = if (focusRequester != null) Modifier.focusRequester(focusRequester) else Modifier
     Column(
         modifier = modifier
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .then(focusModifier)
             .clip(shape)
@@ -662,6 +696,7 @@ private fun FilterChip(
     val focusModifier = if (focusRequester != null) Modifier.focusRequester(focusRequester) else Modifier
     Box(
         modifier = Modifier
+            .orbitFocusSound()
             .onFocusChanged { focused = it.isFocused }
             .then(focusModifier)
             .clip(RoundedCornerShape(30.dp))
@@ -723,6 +758,7 @@ fun OrbitCard(
         Column(
             modifier = Modifier
                 .then(sizeModifier)
+                .orbitFocusSound()
                 .onFocusChanged { focused = it.isFocused }
                 .then(focusModifier)
                 .tvItemClickable(onClick = onClick, onLongClick = onLongClick)
@@ -896,6 +932,7 @@ fun Top10Card(
         Column(
             modifier = modifier
                 .width(148.dp)
+                .orbitFocusSound()
                 .onFocusChanged { focused = it.isFocused }
                 .then(focusModifier)
                 .tvItemClickable(onClick = onClick, onLongClick = onLongClick)

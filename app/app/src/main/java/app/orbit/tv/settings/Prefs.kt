@@ -12,4 +12,8 @@ class Prefs(context: Context) {
     var installedVersion: String?
         get() = sp.getString("catalog_version", null)
         set(value) = sp.edit().putString("catalog_version", value).apply()
+
+    var soundPack: String
+        get() = sp.getString("sound_pack", "soft") ?: "soft"
+        set(value) = sp.edit().putString("sound_pack", value).apply()
 }

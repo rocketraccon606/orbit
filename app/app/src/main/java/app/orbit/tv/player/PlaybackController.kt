@@ -128,9 +128,9 @@ class PlaybackController(
         }
 
         val httpFactory = OkHttpDataSource.Factory(okHttp)
-            .setUserAgent(stream.userAgent ?: DEFAULT_UA)
+            .setUserAgent(headerSafe(stream.userAgent) ?: DEFAULT_UA)
             .setDefaultRequestProperties(
-                buildMap { stream.referrer?.let { put("Referer", it) } },
+                buildMap { headerSafe(stream.referrer)?.let { put("Referer", it) } },
             )
 
         val item = MediaItem.Builder()
@@ -283,6 +283,9 @@ class PlaybackController(
         stopAndRelease()
         scope.cancel()
     }
+
+    private fun headerSafe(value: String?): String? =
+        value?.replace('\r', ' ')?.replace('\n', ' ')?.trim()?.takeIf { it.isNotEmpty() }
 
     private companion object {
         const val TAG = "OrbitPerf"

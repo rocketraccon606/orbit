@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:centerColor="#141414"
+                android:endColor="#1B1B1B"
+                android:startColor="#0A0A0A" />
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/orbit_lockup"
+        android:gravity="center" />
+</layer-list>

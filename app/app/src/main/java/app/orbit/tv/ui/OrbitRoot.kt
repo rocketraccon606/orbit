@@ -30,6 +30,7 @@ import app.orbit.tv.Screen
 import app.orbit.tv.catalog.CatalogState
 import app.orbit.tv.catalog.UpdateState
 import app.orbit.tv.player.PlaybackPhase
+import app.orbit.tv.sound.SoundCue
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -100,6 +101,29 @@ fun OrbitRoot(vm: MainViewModel) {
 
     val keyModifier = Modifier.onPreviewKeyEvent { event ->
         if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
+
+        val repeated = event.nativeKeyEvent.repeatCount > 0
+        when (event.key) {
+            Key.Back -> vm.sound.play(SoundCue.BACK)
+            Key.DirectionLeft, Key.DirectionRight ->
+                if (ui.screen != Screen.Player || ui.quickPanel) {
+                    vm.sound.arm(SoundCue.HORIZONTAL)
+                }
+            Key.DirectionUp, Key.DirectionDown ->
+                if (ui.screen == Screen.Player && !ui.quickPanel) {
+                    vm.sound.play(SoundCue.VERTICAL)
+                } else {
+                    vm.sound.arm(SoundCue.VERTICAL)
+                }
+            Key.ChannelUp, Key.ChannelDown ->
+                if (ui.screen == Screen.Player && !ui.quickPanel) {
+                    vm.sound.play(SoundCue.VERTICAL)
+                }
+            Key.DirectionCenter, Key.Enter ->
+                if (!repeated) vm.sound.play(SoundCue.SELECT)
+            else -> Unit
+        }
+
         if (ui.screen != Screen.Player) return@onPreviewKeyEvent false
 
         val digit = when (event.key) {
