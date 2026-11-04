@@ -72,12 +72,18 @@ def validate(
                 f"(> {int(MAX_DROP_RATIO * 100)}%)"
             )
         previous_collections = {
-            c.get("id") for c in previous_report.get("collections", []) if c.get("count", 0) > 0
+            c.get("id"): int(c.get("count") or 0)
+            for c in previous_report.get("collections", []) if c.get("count", 0) > 0
         }
         current_collections = {
             c.get("id") for c in report.get("collections", []) if c.get("count", 0) > 0
         }
-        for collection_id in sorted(previous_collections - current_collections):
+        for collection_id in sorted(set(previous_collections) - current_collections):
+            # A tiny country row can vanish when all of its streams fail one
+            # health sweep; that is noise, not a broken catalog. Core thematic
+            # collections and large country rows still block the publish.
+            if collection_id.startswith("country-") and previous_collections[collection_id] < 10:
+                continue
             reasons.append(f"collection {collection_id} became empty")
     return reasons
 

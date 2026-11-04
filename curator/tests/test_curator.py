@@ -300,3 +300,12 @@ def test_build_end_to_end_and_version_hash(tmp_path):
     ]
     reasons = validate(out / "catalog.db", current, previous)
     assert any("india-movies" in reason for reason in reasons)
+
+    previous = json.loads((out / "report.json").read_text())
+    previous["collections"] = previous["collections"] + [
+        {"id": "country-uk", "title": "United Kingdom", "count": 4},
+        {"id": "country-xx", "title": "Example", "count": 12},
+    ]
+    reasons = validate(out / "catalog.db", current, previous)
+    assert all("country-uk" not in reason for reason in reasons)
+    assert any("country-xx" in reason for reason in reasons)
