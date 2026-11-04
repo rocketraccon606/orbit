@@ -1,0 +1,48 @@
+{
+  "malayalam_ids": [
+    "Asianet.in", "AsianetNews.in", "AsianetMovies.in", "AsianetMiddleEast.in",
+    "ManoramaNews.in", "MazhavilManorama.in", "MathrubhumiNews.in",
+    "KairaliTV.in", "KairaliNews.in", "KairaliWe.in", "KairaliArabia.in",
+    "SunSurya.in", "SunSuryaMovies.in", "SunSuryaMusic.in",
+    "AmritaTV.in", "JaihindTV.in", "JanamTV.in", "24News.in", "ReporterTV.in",
+    "SafariTV.in", "KaumudyTV.in", "KeralaVision.in", "RajNewsMalayalam.in",
+    "News18Kerala.in", "DDMalayalam.in", "KiteVicters.in",
+    "Shalom.in", "ShalomWorld.us", "ShalomAmerica.us", "ShalomWorldPrayer.us",
+    "GoodnessTV.in", "HarvestTV.in", "HarvestTVKeralam.in", "HarvestUSA.in",
+    "DarshanaTV.in", "FlowersTVUSA.us"
+  ],
+  "malayalam_order": [
+    "Asianet.in", "AsianetNews.in", "ManoramaNews.in", "MathrubhumiNews.in",
+    "SunSurya.in", "MazhavilManorama.in", "KairaliTV.in", "AsianetMovies.in",
+    "SunSuryaMovies.in", "KairaliWe.in", "AmritaTV.in", "24News.in", "ReporterTV.in",
+    "JanamTV.in", "JaihindTV.in", "SafariTV.in", "News18Kerala.in", "AsianetMiddleEast.in",
+    "KaumudyTV.in", "KeralaVision.in", "RajNewsMalayalam.in", "KairaliNews.in",
+    "DDMalayalam.in", "KiteVicters.in", "Shalom.in", "GoodnessTV.in", "HarvestTV.in",
+    "HarvestTVKeralam.in", "DarshanaTV.in", "ShalomWorld.us", "ShalomAmerica.us",
+    "FlowersTVUSA.us", "HarvestUSA.in", "ShalomWorldPrayer.us"
+  ],
+  "global_ids": [
+    "BBCNews.uk", "CNNInternational.us", "SkyNews.uk", "CNBC.us",
+    "BloombergTV.us", "EuronewsEnglish.fr", "France24English.fr",
+    "DWEnglish.de", "AlJazeeraEnglish.qa", "TRTWorld.tr", "NHKWorldJapan.jp",
+    "CNAInternational.sg", "CNA.sg", "ABCNews.au", "CBCNewsNetwork.ca",
+    "ArirangTV.kr", "KBSWorld.kr", "CCTV1.cn", "CCTV13.cn", "TV5MondeAsia.fr",
+    "SABCNews.za", "RTNews.ru", "i24NEWSEnglish.il", "WION.in", "NDTV24x7.in"
+  ],
+  "global_order": [
+    "BBCNews.uk", "CNNInternational.us", "AlJazeeraEnglish.qa", "DWEnglish.de",
+    "France24English.fr", "SkyNews.uk", "EuronewsEnglish.fr", "NHKWorldJapan.jp",
+    "CNAInternational.sg", "ABCNews.au", "CBCNewsNetwork.ca", "ArirangTV.kr",
+    "KBSWorld.kr", "TRTWorld.tr", "BloombergTV.us", "CNBC.us", "SABCNews.za",
+    "i24NEWSEnglish.il", "CCTV1.cn", "CCTV13.cn", "TV5MondeAsia.fr", "RTNews.ru",
+    "WION.in", "NDTV24x7.in"
+  ],
+  "editor_picks": [
+    "Asianet.in", "AsianetNews.in", "ManoramaNews.in", "MazhavilManorama.in",
+    "AsianetMovies.in", "KairaliTV.in", "SunSurya.in", "MathrubhumiNews.in",
+    "BBCNews.uk", "CNNInternational.us", "AlJazeeraEnglish.qa", "DWEnglish.de",
+    "France24English.fr", "SkyNews.uk", "NHKWorldJapan.jp", "CNBC.us",
+    "BloombergTV.us", "WION.in", "NDTV24x7.in", "CCTV13.cn",
+    "ArirangTV.kr", "CNAInternational.sg", "ABCNews.au", "CBCNewsNetwork.ca"
+  ]
+}

@@ -1,0 +1,10 @@
+[project]
+name = "orbit-curator"
+version = "0.1.0"
+description = "Build the Orbit live TV catalog"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

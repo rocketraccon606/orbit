@@ -1,0 +1,14 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="one.in" tvg-logo="http://logo/one.png" group-title="News",Channel One HD
+#EXTVLCOPT:http-user-agent=Mozilla/5.0
+#EXTVLCOPT:http-referrer=http://referrer.example/
+http://example.com/one.m3u8
+this line is junk and must be ignored
+#EXTINF:-1,No URL Here
+#EXTGRP:Movies
+#EXTINF:-1 tvg-id="two.in",Channel Two [Geo-blocked]
+http://example.com/two.ts
+#EXTINF:-1,Broken entry
+not-a-url
+#EXTINF:-1 tvg-id="three.in",Channel Three
+https://example.com/three.m3u8

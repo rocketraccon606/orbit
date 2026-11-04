@@ -1,0 +1,7 @@
+{
+  "source": "iptv-org",
+  "source_license": "CC0-1.0",
+  "api_base": "https://iptv-org.github.io/api",
+  "files": ["channels.json", "streams.json", "countries.json", "languages.json", "categories.json"],
+  "optional_files": ["logos.json"]
+}

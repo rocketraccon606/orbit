@@ -1,0 +1,34 @@
+{
+  "malayalam_keywords": [
+    "malayalam", "kerala", "malayali", "asianet", "surya", "kairali",
+    "manorama", "mathrubhumi", "mazhavil", "jaihind", "janam", "reporter",
+    "safari", "kaumudy", "kerala vision", "raj news", "shalom", "goodness",
+    "harvest", "darshana", "flowers tv", "amrita", "24 news", "kite",
+    "victers", "dd malayalam", "mazhavil manorama"
+  ],
+  "category_keywords": {
+    "news": ["news", "samachar", "khabar", "bulletin", "headlines", "24x7", "current affairs"],
+    "movies": ["movie", "movies", "cinema", "films", "film", "bioskop", "picture"],
+    "music": ["music", "songs", "song", "fm", "radio", "hits", "melody"],
+    "sports": ["sport", "sports", "cricket", "football", "soccer", "tennis", "golf", "racing"],
+    "kids": ["kids", "kid", "cartoon", "toon", "junior", "baby", "children", "animation"],
+    "documentary": ["documentary", "discovery", "nat geo", "national geographic", "history", "explore", "nature", "wild"],
+    "religious": ["devotional", "devotion", "god", "temple", "church", "islam", "quran", "gospel", "bhakti", "faith", "religious", "spiritual"],
+    "entertainment": ["entertainment", "comedy", "serial", "drama", "family", "show", "tv", "channel", "life", "style"]
+  },
+  "language_keywords": {
+    "mal": ["malayalam", "kerala", "malayali"],
+    "tam": ["tamil", "tamilan"],
+    "tel": ["telugu"],
+    "kan": ["kannada"],
+    "hin": ["hindi"],
+    "ben": ["bengali", "bangla"],
+    "mar": ["marathi"],
+    "pan": ["punjabi"],
+    "guj": ["gujarati"],
+    "urd": ["urdu"],
+    "eng": ["english"]
+  },
+  "english_countries": ["US", "GB", "UK", "AU", "CA", "NZ", "IE", "ZA", "SG", "PH", "NG", "KE", "GH"],
+  "allow_country_default_language": true
+}
