@@ -19,6 +19,18 @@ app downloads that file and plays source URLs directly.
 | `scripts/` | Local toolchain, catalog serving, emulator, deploy and benchmark helpers |
 | `.github/workflows/` | Scheduled curator run and GitHub Pages publish |
 
+## Live catalog
+
+The scheduled `catalog` workflow publishes the current schema-2 catalog to GitHub
+Pages:
+
+- Catalog base: `https://rocketraccon606.github.io/orbit/`
+- Version check: `https://rocketraccon606.github.io/orbit/version.json`
+- Report and gate: `https://rocketraccon606.github.io/orbit/report.json`
+
+Release builds use that URL by default. Debug builds point at the local catalog
+(`http://10.0.2.2:8787/`) unless built with `ORBIT_CATALOG_URL` set to Pages.
+
 ## Start here
 
 - Builder agents: read [`AGENTS.md`](AGENTS.md) first, then the current phase brief in `prompts/`.
