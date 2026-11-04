@@ -19,6 +19,11 @@ connected and authorized. Do not store the TV IP, serial or any key in the repos
    adb devices                     # must say "device", not "unauthorized"
    ```
 
+If `adb connect` hangs while the TV still answers ping and port 5555 is open, adbd is
+not completing its handshake. Wake/unlock the TV, toggle **Network debugging** (or
+**USB debugging**) off and on, then accept the RSA prompt. A healthy TV sends a short
+binary `CNXN` packet immediately after the TCP connection.
+
 `scripts/deploy-tv.sh` refuses to run unless exactly one authorized device is present
 (or `ORBIT_SERIAL` names one), and refuses emulators unless `--allow-emulator` is
 passed. It only installs `app.orbit.tv`; it never changes TV settings or other apps.
